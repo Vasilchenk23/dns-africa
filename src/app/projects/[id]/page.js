@@ -2,7 +2,7 @@ import { Client } from 'pg';
 
 async function getProject(id) {
   const client = new Client({
-    connectionString: 'postgres://postgres:vas2325@localhost:5432/company_services'
+    connectionString: process.env.DB_URL,
   });
 
   await client.connect();
@@ -19,18 +19,17 @@ async function getProject(id) {
 }
 
 export default async function ProjectPage({ params }) {
-    const { id } = await params;
+  const { id } = params;  // Получаем параметр id из URL
+  const project = await getProject(id);
 
-    const project = await getProject(id);
-  
-    if (!project) {
-      return <h1 className="text-center text-2xl font-bold">Проект не найден</h1>;
-    }
-  
-    return (
-        <>
-        <h4>Projects / {project.title}</h4>
-        <div className="max-w-7xl mx-auto p-6 flex items-center justify-between">
+  if (!project) {
+    return <h1 className="text-center text-2xl font-bold">Проект не найден</h1>;
+  }
+
+  return (
+    <>
+      <h4>Projects / {project.title}</h4>
+      <div className="max-w-7xl mx-auto p-6 flex items-center justify-between">
         <div className="w-1/2 h-auto">
           <img 
             src={project.image} 
@@ -51,7 +50,8 @@ export default async function ProjectPage({ params }) {
             </a>
           </div>
         </div>
-        </div>
-        </>
-    );  
+      </div>
+    </>
+  );
 }
+

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 async function fetchServices() {
   const client = new Client({
-    connectionString: 'postgres://postgres:vas2325@localhost:5432/company_services'
+    connectionString: process.env.DB_URL,
   });
 
   await client.connect();
@@ -59,14 +59,13 @@ export default async function ServicesPage() {
         })}
       </div>
       <div className="flex items-center justify-center space-x-4">
-          <Link 
-            href="/contact" 
-            className="bg-[#00509E] text-white px-4 py-2 rounded-[50px] w-[181px] h-[52px] flex items-center justify-center text-center"
-          >
-            CONTACT US
-          </Link>
-        </div>
+        <Link 
+          href="/contact" 
+          className="bg-[#00509E] text-white px-4 py-2 rounded-[50px] w-[181px] h-[52px] flex items-center justify-center text-center"
+        >
+          CONTACT US
+        </Link>
+      </div>
     </section>
   );
 }
-
