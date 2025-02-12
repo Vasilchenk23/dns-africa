@@ -3,11 +3,7 @@ import Link from 'next/link';
 
 async function fetchServices() {
   const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'company_services',
-    password: 'vas2325',
-    port: 5432,
+    connectionString: process.env.DATABASE_URL,
   });
 
   await client.connect();
