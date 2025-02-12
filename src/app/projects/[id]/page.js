@@ -2,7 +2,7 @@ import { Client } from 'pg';
 
 async function getProject(id) {
   const client = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: 'postgres://postgres:vas2325@localhost:5432/company_services'
   });
 
   await client.connect();
