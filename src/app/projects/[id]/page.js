@@ -11,7 +11,7 @@ async function getProject(id) {
     const res = await client.query('SELECT * FROM projects WHERE id = $1', [id]);
     return res.rows[0];
   } catch (error) {
-    console.error('Ошибка получении данных:', error);
+    console.error('error', error);
     return null;
   } finally {
     await client.end();
