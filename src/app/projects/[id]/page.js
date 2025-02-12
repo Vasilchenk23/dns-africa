@@ -2,7 +2,7 @@ import { Client } from 'pg';
 
 async function getProject(id) {
   const client = new Client({
-   connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
   });
 
   await client.connect();
@@ -11,7 +11,7 @@ async function getProject(id) {
     const res = await client.query('SELECT * FROM projects WHERE id = $1', [id]);
     return res.rows[0];
   } catch (error) {
-    console.error('error', error);
+    console.error('Ошибка при получении данных:', error);
     return null;
   } finally {
     await client.end();
