@@ -19,25 +19,25 @@ async function getProject(id) {
 }
 
 export default async function ProjectPage({ params }) {
-  const { id } = params;  // Получаем параметр id из URL
+  const { id } = params; 
   const project = await getProject(id);
 
   if (!project) {
-    return <h1 className="text-center text-2xl font-bold">Проект не найден</h1>;
+    return <h1 className="text-center text-2xl font-bold">Error</h1>;
   }
 
   return (
     <>
-      <h4>Projects / {project.title}</h4>
-      <div className="max-w-7xl mx-auto p-6 flex items-center justify-between">
-        <div className="w-1/2 h-auto">
+      <h4 className='mt-[100px] text-center text-xl'>{`Projects / ${project.title}`}</h4>
+      <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row items-center justify-between">
+        <div className="w-full md:w-1/2 h-auto mb-6 md:mb-0">
           <img 
             src={project.image} 
             alt={project.title} 
             className="w-full h-full object-cover rounded-lg" 
           />
         </div>
-        <div className="w-1/2 pl-8">
+        <div className="w-full md:w-1/2 pl-0 md:pl-8">
           <h1 className="text-3xl font-bold text-[#1A1B4B]">{project.title}</h1>
           <p className="text-lg text-gray-700 mt-4">{project.short_description}</p>
           
@@ -54,4 +54,3 @@ export default async function ProjectPage({ params }) {
     </>
   );
 }
-

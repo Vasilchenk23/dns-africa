@@ -4,13 +4,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../Header.module.css";
+import { useRouter, usePathname } from "next/navigation";
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState('EN');
+  const router = useRouter();
+  const currentPath = usePathname();
 
   const toggleLanguage = () => {
     setLanguage(language === 'EN' ? 'FR' : 'EN');
+  };
+
+  const navigateAndScroll = (sectionId) => {
+    if (currentPath === "/") {
+      scrollToSection(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -21,30 +40,30 @@ export default function Header() {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/about">About Us</Link>
+          <a className="cursor-pointer" onClick={() => navigateAndScroll("aboutUs")}>About Us</a>
           <Link href="/services">Our Services</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/blog">Blog</Link>
-          <Link href="/news">News</Link>
+          <a className="cursor-pointer" onClick={() => navigateAndScroll("news")}>News</a>
           <button className={styles.langButton} onClick={toggleLanguage}>
             {language}
           </button>
         </nav>
-
-        {/* Кнопка "Contact Us" */}
         <Link href="/contact" className={styles.contactBtn}>
           CONTACT US
         </Link>
 
-        {/* КНОПКА БУРГЕР-МЕНЮ (Мобильная версия) */}
         <button className={styles.burger} onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "✖" : "☰"}
+          {menuOpen ? "☰" : "☰"}
         </button>
       </div>
-
-      {/* Мобильное меню */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
         <nav className={styles.mobileNav}>
+        <button className="absolute right-4 top-4 text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? "✖" : "✖"}
+        </button>
+          <br/>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
           <Link href="/services" onClick={() => setMenuOpen(false)}>Our Services</Link>
           <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>

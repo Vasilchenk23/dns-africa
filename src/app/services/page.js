@@ -34,7 +34,7 @@ export default async function ServicesPage() {
   return (
     <section className="bg-white py-12">
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-[#1A1B4B]">OUR SERVICES</h1>
+        <h1 className="text-4xl font-bold text-[#1A1B4B] mt-[100px]">OUR SERVICES</h1>
       </header>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
         {services.map((service) => {
@@ -58,7 +58,7 @@ export default async function ServicesPage() {
           );
         })}
       </div>
-      <div className="flex items-center justify-center space-x-4">
+      <div className="flex items-center justify-center space-x-4 mt-[100px]">
         <Link 
           href="/contact" 
           className="bg-[#00509E] text-white px-4 py-2 rounded-[50px] w-[181px] h-[52px] flex items-center justify-center text-center"

@@ -26,16 +26,16 @@ const expertiseAreas = [
 
 export default function Expertise() {
   return (
-    <section className="py-16 bg-white w-full min-w-[1000px]">
-      <div className="container w-full min-w-[1000px] border px-6 md:px-12 text-center">
+    <section className="py-16 bg-white w-full">
+      <div className="container w-full px-6 md:px-12 text-center">
         <h2 className="text-[24px] md:text-4xl font-bold text-gray-800 mb-[104px] mt-[152px]">
          EXPERTISE AREAS
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 px-2 sm:px-4 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2 sm:px-4 md:px-8">
           {expertiseAreas.map((area) => (
             <div
               key={area.id}
-              className="bg-[#F2F9FF] p-6 rounded-lg shadow-lg flex flex-col items-center text-center w-[360px]"
+              className="bg-[#F2F9FF] p-6 rounded-lg shadow-lg flex flex-col items-center text-center w-full max-w-xs mx-auto"
             >
               <Image
                 src={area.icon}

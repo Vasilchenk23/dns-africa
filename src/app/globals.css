@@ -19,6 +19,8 @@ body {
   background: var(--background);
   font-family: MyCustomFont;
   background-color: #ffffff;
+  overflow-x: hidden;
+  color: black;
 }
 
 @font-face {

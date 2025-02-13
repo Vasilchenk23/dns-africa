@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section className="py-16">
-      <div className="container w-full min-w-[1000px] px-6 md:px-12">
+    <section className="py-16" id="aboutUs">
+      <div className="container w-[100vw] px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
           About Us
         </h2>
@@ -36,7 +36,7 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center justify-center space-x-4 mt-[100px]">
           <Link 
             href="/contact" 
             className="bg-[#00509E] text-white px-4 py-2 rounded-[50px] w-[181px] h-[52px] flex items-center justify-center text-center"
