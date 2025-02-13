@@ -11,7 +11,7 @@ async function fetchServices() {
     const res = await client.query('SELECT * FROM projects');
     return res.rows;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error:', error);
     return [];
   } finally {
     await client.end();
