@@ -19,7 +19,6 @@ async function fetchServices() {
 }
 
 export default async function ServicesPage() {
-  // Получаем список услуг (проектов) через асинхронную функцию
   const services = await fetchServices();
 
   if (!services || services.length === 0) {
@@ -27,8 +26,8 @@ export default async function ServicesPage() {
   }
 
   return (
-    <section className="bg-white py-12">
-      <header className="text-center mb-12">
+    <section className="bg-white py-12 w-full min-w-[1000px]">
+      <header className="text-center mb-12 w-full min-w-[1000px]">
         <h1 className="text-4xl font-bold text-[#1A1B4B]">OUR PROJECTS</h1>
       </header>
       <div className="flex justify-between items-center max-w-4xl mx-auto mb-8 px-4">

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ContactUs() {
     return (
-      <section className="relative bg-white ">
+      <section className="relative bg-white w-full min-w-[1000px]">
         <h2 className="text-[24px] md:text-4xl font-bold text-gray-800 mb-[104px] mt-[128px] text-center">CONTACT</h2>
         <div className="container mx-auto pb-[64px] pl-[100px] pr-[100px] flex flex-col lg:flex-row items-center gap-12">
           <div className="relative w-full lg:w-1/2 flex justify-center">

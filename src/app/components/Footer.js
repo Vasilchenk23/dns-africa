@@ -2,15 +2,15 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-      <footer className="bg-[#F2F9FF]  pl-[80px] pr-[80px] pt-[64px]">
+      <footer className="bg-[#F2F9FF] w-full min-w-[1000px] border px-[16px] pt-[64px]">
         <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8 pb-[24px]">
           <div className="text-center lg:text-left">
             <Image 
-            src="./img/logo.svg" 
-            alt="DNS Africa Logo" 
-            className="w-32 mx-auto lg:mx-0"
-            width={100}
-            height={100} />
+              src="./img/logo.svg" 
+              alt="DNS Africa Logo" 
+              className="w-32 mx-auto lg:mx-0"
+              width={100}
+              height={100} />
             <p className="mt-2 text-sm text-gray-700 font-medium">
               CONNECTING AFRICA, LIGHTING THE FUTURE
             </p>
@@ -25,18 +25,18 @@ export default function Footer() {
             <br/>
           </div>
           <div className="text-center lg:text-left">
-          <br/>
-            <div className="flex gap-x-8">
+            <br/>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-x-8">
               <p className="text-blue-900 font-medium">About Us</p>
               <p className="text-blue-900 font-medium pl-[42px]">Our Services</p>
             </div>
             <br/>
-            <div className="flex gap-x-8">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-x-8">
               <p className="text-blue-900 font-medium">Projects</p>
               <p className="text-blue-900 font-medium pl-[42px]">Blog</p>
               <p className="text-blue-900 font-medium pl-[42px]">News</p>
             </div>
-             <br/>
+            <br/>
             <p className="text-blue-900 font-medium">Contact Us</p>
           </div>
         </div>
@@ -51,5 +51,4 @@ export default function Footer() {
         </div>
       </footer>
     );
-  }
-  
+}

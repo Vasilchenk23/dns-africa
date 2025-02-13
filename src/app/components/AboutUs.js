@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function About() {
   return (
     <section className="py-16">
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container w-full min-w-[1000px] px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
           About Us
         </h2>

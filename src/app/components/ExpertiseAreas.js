@@ -26,8 +26,8 @@ const expertiseAreas = [
 
 export default function Expertise() {
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-6 md:px-12 text-center">
+    <section className="py-16 bg-white w-full min-w-[1000px]">
+      <div className="container w-full min-w-[1000px] border px-6 md:px-12 text-center">
         <h2 className="text-[24px] md:text-4xl font-bold text-gray-800 mb-[104px] mt-[152px]">
          EXPERTISE AREAS
         </h2>

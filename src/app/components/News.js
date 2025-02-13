@@ -29,7 +29,7 @@ const newsData = [
 
 export default function News() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white w-full min-w-[1000px]">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
           NEWS
