@@ -55,7 +55,7 @@ export default async function ProjectPage() {
           <Link key={service.id} href={`/projects/${service.id}`} className="w-full">
             <article className="w-full flex flex-col transition-shadow duration-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg cursor-pointer">
               <img
-                src={service.image}
+                src={`http://localhost:3001/${service.image_url}`}
                 alt={service.title}
                 className="w-full h-[245px] object-cover"
               />

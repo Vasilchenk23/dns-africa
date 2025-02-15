@@ -1,5 +1,4 @@
 import { Client } from 'pg';
-import Image from 'next/image';
 
 async function getProject(id) {
   const client = new Client({
@@ -12,7 +11,7 @@ async function getProject(id) {
     const res = await client.query('SELECT * FROM articles WHERE id = $1', [id]);
     return res.rows[0];
   } catch (error) {
-    console.error('Ошибка при получении данных:', error);
+    console.error('error', error);
     return null;
   } finally {
     await client.end();
@@ -24,19 +23,16 @@ export default async function ProjectPage({ params }) {
   const articles = await getProject(id);
 
   if (!articles) {
-    return <h1 className="text-center text-2xl font-bold">Ошибка: статья не найдена</h1>;
+    return <h1 className="text-center text-2xl font-bold">not found</h1>;
   }
 
   return (
     <>
       <h4 className="mt-[100px] text-left text-xl pl-[100px]">{`Blog / ${articles.title}`}</h4>
       <div className="w-full h-[100vh] md:h-[60vh] flex justify-center items-center relative mb-6 md:mb-0">
-        <Image
-          src={articles.image_url}
+        <img
+          src={`https://admin-dns.vercel.app/${articles.image_url}`}
           alt={articles.title}
-          width={500}
-          height={500}
-          objectFit="cover"
         />
       </div>
       <div className="max-w-screen-xl mx-auto p-6 flex flex-col md:flex-row flex justify-center items-center">

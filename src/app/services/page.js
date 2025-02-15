@@ -19,16 +19,11 @@ async function fetchServices() {
   }
 }
 
-const toBase64 = (uint8Array) => {
-  const buffer = Buffer.from(uint8Array);
-  return buffer.toString('base64');
-};
-
 export default async function ServicesPage() {
   const services = await fetchServices();
 
   if (!services || services.length === 0) {
-    return <h1>Услуги не найдены</h1>;
+    return <h1>Error</h1>;
   }
 
   return (
@@ -38,20 +33,16 @@ export default async function ServicesPage() {
       </header>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
         {services.map((service) => {
-          const svgBase64 = service.svg_image ? toBase64(service.svg_image) : null;
-          const svgDataUri = svgBase64 ? `data:image/svg+xml;base64,${svgBase64}` : '';
           return (
             <article
               key={service.id}
               className="bg-[#F2F9FF] p-5 rounded-xl shadow-lg h-[380px] flex flex-col justify-between border-black border-[1px]"
             >
-              {svgDataUri ? (
                 <img
-                  src={svgDataUri}
+                  src={`http://localhost:3001/${service.svg_image}`}
                   alt={service.title}
                   className="mb-4 w-10 h-10"
                 />
-              ) : null}
               <h2 className="text-xl font-semibold text-[#1A1B4B]">{service.title}</h2>
               <p className="text-gray-600">{service.description}</p>
             </article>

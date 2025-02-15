@@ -25,14 +25,13 @@ export default async function ProjectPage({ params }) {
   if (!project) {
     return <h1 className="text-center text-2xl font-bold">Error</h1>;
   }
-
   return (
     <>
       <h4 className='mt-[100px] text-center text-xl'>{`Projects / ${project.title}`}</h4>
       <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row items-center justify-between">
         <div className="w-full md:w-1/2 h-auto mb-6 md:mb-0">
           <img 
-            src={project.image} 
+            src={`http://localhost:3001/${project.image_url}`} 
             alt={project.title} 
             className="w-full h-full object-cover rounded-lg" 
           />

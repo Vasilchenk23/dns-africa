@@ -22,7 +22,7 @@ export default async function Blog() {
   const articles = await fetchServices();
 
   if (!articles || articles.length === 0) {
-    return <h1 className="text-center text-2xl">error</h1>;
+    return <h1 className="text-center text-2xl">not found</h1>;
   }
 
   return (
@@ -36,7 +36,7 @@ export default async function Blog() {
           <Link key={articles.id} href={`/blog/${articles.id}`} className="w-full">
             <article className="w-full flex flex-col transition-shadow duration-300 overflow-hidden  cursor-pointer">
               <img
-                src={articles.image_url}
+                src={`https://admin-dns.vercel.app/${articles.image_url}`}
                 alt={articles.title}
                 className="w-full h-[245px] object-cover"
               />
