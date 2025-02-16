@@ -2,19 +2,42 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import styles from "../Header.module.css";
+import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-
+import styles from "../Header.module.css";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState('EN');
+  const [language, setLanguage] = useState("EN");
   const router = useRouter();
   const currentPath = usePathname();
+  
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.body.appendChild(script);
+
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        { pageLanguage: "auto", includedLanguages: "en,fr,ru,uk" },
+        "google_translate_element"
+      );
+
+      const translateElement = document.querySelector(".goog-te-banner-frame");
+      if (translateElement) {
+        translateElement.style.display = "none"; 
+      }
+    };
+  }, []);
 
   const toggleLanguage = () => {
-    setLanguage(language === 'EN' ? 'FR' : 'EN');
+    const googleTranslate = document.querySelector(".goog-te-combo");
+    if (googleTranslate) {
+      googleTranslate.value = language === "EN" ? "en" : "fr";
+      googleTranslate.dispatchEvent(new Event("change"));
+      setLanguage(language === "EN" ? "FR" : "EN");
+    }
   };
 
   const navigateAndScroll = (sectionId) => {
@@ -40,11 +63,15 @@ export default function Header() {
         </Link>
 
         <nav className={styles.nav}>
-          <a className="cursor-pointer" onClick={() => navigateAndScroll("aboutUs")}>About Us</a>
+          <a className="cursor-pointer" onClick={() => navigateAndScroll("aboutUs")}>
+            About Us
+          </a>
           <Link href="/services">Our Services</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/blog">Blog</Link>
-          <a className="cursor-pointer" onClick={() => navigateAndScroll("news")}>News</a>
+          <a className="cursor-pointer" onClick={() => navigateAndScroll("news")}>
+            News
+          </a>
           <button className={styles.langButton} onClick={toggleLanguage}>
             {language}
           </button>
@@ -57,12 +84,13 @@ export default function Header() {
           {menuOpen ? "☰" : "☰"}
         </button>
       </div>
+
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
         <nav className={styles.mobileNav}>
-        <button className="absolute right-4 top-4 text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "✖" : "✖"}
-        </button>
-          <br/>
+          <button className="absolute right-4 top-4 text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
+            ✖
+          </button>
+          <br />
           <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
           <Link href="/services" onClick={() => setMenuOpen(false)}>Our Services</Link>
@@ -77,6 +105,7 @@ export default function Header() {
           </Link>
         </nav>
       </div>
+      <div id="google_translate_element" style={{ display: "none" }}></div>
     </header>
   );
 }
