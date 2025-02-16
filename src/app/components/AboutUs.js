@@ -8,8 +8,8 @@ export default function About() {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
           About Us
         </h2>
-        <div className="flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-1/2 flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row justify-center">
+        <div className="w-full md:w-1/2 flex flex-col mt-[100px] justify-center align-center text-center">
             <Image
               src="/img/about.png"
               alt="Team discussion"
@@ -18,21 +18,12 @@ export default function About() {
               className="rounded-lg"
             />
           </div>
-          <div className="w-full md:w-1/2 flex flex-col gap-6">
-            <Image
-              src="/img/team.png"
-              alt="Collaboration"
-              width={600}
-              height={100}
-              className="rounded-lg"
-            />
-            <p className="text-gray-600 text-lg leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. 
-            Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, 
-            ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. 
-            Vestibulum auctor ornare leo, non suscipit magna interdum eu. 
-            Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. 
-            Pellentesque commodo lacus at sodales 
+          <div className="w-full md:w-1/2 flex flex-col gap-1 justify-center align-center text-left leading-loose">
+            <p className="text-gray-600 text-[20px] leading-relaxed">
+              DNS AFRICA, basé à Tunis, est un bureau d’étude agréé pour l’analyse des installations photovoltaïques sous régime auto-producteur (BT/HTA) ou autorisation (1-10 MWc).
+              <br/>
+              Filiale de Green Energy Solutions (Lyon, France), fondée en 2022, nous développons nos activités en Tunisie et en Afrique.
+              Nos experts qualifiés offrent des solutions solaires durables, couvrant études de faisabilité, gestion administrative et supervision des installations.
             </p>
           </div>
         </div>
