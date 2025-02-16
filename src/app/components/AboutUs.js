@@ -1,3 +1,24 @@
+export const metadata = {
+  title: "About DNS Africa | Leading Solar Energy Solutions",
+  description:
+    "Learn more about DNS Africa, our mission, vision, and expertise in solar energy solutions across Tunisia and Africa.",
+  openGraph: {
+    title: "About DNS Africa | Solar Energy Experts",
+    description:
+      "Discover how DNS Africa provides top-tier photovoltaic solutions for sustainable energy in Africa.",
+    url: "https://dns-africa-879w.vercel.app/",
+    images: [
+      {
+        url: "/img/slogan.png",
+        width: 1200,
+        height: 630,
+        alt: "DNS Africa - About Us",
+      },
+    ],
+    type: "article",
+  },
+};
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,8 +29,8 @@ export default function About() {
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
           About Us
         </h2>
-        <div className="flex flex-col md:flex-row  items-center justify-center max-w-[1000px] mx-auto gap-8">
-          <div className="w-full md:w-1/2  mt-[140px] flex justify-center">
+        <div className="flex flex-col md:flex-row items-center justify-center max-w-[1000px] mx-auto gap-8">
+          <div className="w-full md:w-1/2 mt-[140px] flex justify-center">
             <Image
               src="/img/about.png"
               alt="Team discussion"
@@ -18,7 +39,7 @@ export default function About() {
               className="rounded-lg"
             />
           </div>
-          <div className="w-full md:w-1/2 flex flex-col gap-4 text-left leading-loose ">
+          <div className="w-full md:w-1/2 flex flex-col gap-4 text-left leading-loose">
             <p className="text-gray-600 text-[20px] leading-relaxed">
               DNS AFRICA, basé à Tunis, est un bureau d’étude agréé pour l’analyse des installations photovoltaïques sous régime auto-producteur (BT/HTA) ou autorisation (1-10 MWc).
               <br />

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://dns-africa-879w.vercel.app/
+
+# Sitemaps
+Sitemap: https://dns-africa-879w.vercel.app/sitemap.xml
