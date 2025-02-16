@@ -9,7 +9,6 @@
   }
   
   .container {
-   
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -24,7 +23,7 @@
   
   .nav {
     display: flex;
-    gap: 32px;
+    gap: 150px;
   }
   
   .nav a {

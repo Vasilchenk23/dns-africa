@@ -49,7 +49,6 @@ export default function ContactUs() {
       </h2>
 
       <div className="container mx-auto pb-16 px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12">
-        {/* Left Section with Image */}
         <div className="relative w-full lg:w-1/2 flex justify-center">
           <Image
             src="/img/images.png"
@@ -59,8 +58,6 @@ export default function ContactUs() {
             className="max-w-full h-auto"
           />
         </div>
-
-        {/* Right Section with Form */}
         <div className="w-full max-w-md md:max-w-lg bg-[#F2F9FF] p-6 md:p-8 rounded-3xl shadow-lg border border-black">
           <h2 className="text-lg md:text-xl font-bold text-[#1A1B4B] mb-6 text-center md:text-left">
             HAVE ANY QUESTIONS FOR US?
@@ -105,15 +102,18 @@ export default function ContactUs() {
           {success && <p className="text-green-500 mt-4 text-center">{success}</p>}
         </div>
       </div>
-
-      <div className="bg-[#5CB338] text-white text-center py-6 mt-12 flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
-        <p className="text-xl md:text-2xl font-medium text-center md:text-left">
-          ENERGY FOR TODAY, SOLUTIONS FOR TOMORROW!
-        </p>
-        <button className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 mt-4 md:mt-0">
-          CONTACT US
-        </button>
-      </div>
+      <div className="relative w-full h-[400px] flex items-center justify-between p-8">
+        <img className="w-full h-full object-cover absolute top-0 left-0 z-0" src="/img/green.png" alt="Green Energy" />
+        
+        <div className="relative z-10 text-white flex flex-col md:flex-row items-center justify-between w-full">
+          <p className="text-xl md:text-4xl font-medium mt-[100px] text-center md:text-left max-w-[900px]">
+            ENERGY FOR TODAY, SOLUTIONS FOR TOMORROW!
+          </p>
+          <button className="bg-orange-500 text-white mt-[100px] px-6 py-3 rounded-full hover:bg-orange-600">
+            CONTACT US
+          </button>
+        </div>
+      </div>     
     </section>
   );
 }
