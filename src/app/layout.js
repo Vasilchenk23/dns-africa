@@ -56,6 +56,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
+        <meta name="google-site-verification" content="Rpi30WgCXfna8S3Rh-FfK-rTN2CXY2XoPMCZm4jpW8I" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="description" content={metadata.description} />
         <meta name="keywords" content={metadata.keywords} />
