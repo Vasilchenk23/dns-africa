@@ -44,7 +44,7 @@ export default function ContactUs() {
 
   return (
     <section className="relative bg-white w-full">
-      <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-16 mt-32 text-center">
+      <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-16 mt-32 text-center" id="contact">
         CONTACT
       </h2>
 

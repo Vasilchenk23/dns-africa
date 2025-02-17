@@ -58,7 +58,7 @@ export default async function ServicesPage() {
         {services.map((service) => (
           <article
             key={service.id}
-            className="bg-[#F2F9FF] p-5 rounded-xl shadow-lg h-[380px] flex flex-col justify-between border border-black"
+            className="bg-[#F2F9FF] p-5 rounded-xl shadow-lg h-[280px] flex flex-col justify-between border border-black"
           >
             <img
               src={`https://admin-dns.vercel.app/${service.svg_image}`}
