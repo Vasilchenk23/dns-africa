@@ -7,14 +7,14 @@ export default function Mission() {
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
           NOTRE MISSION
         </h2>
-        <p className="text-gray-500 text-lg mt-4">
+        <p className="text-black font-bold text-lg mt-4">
           Notre mission est de vous accompagner dans votre transition énergétique en 
           vous offrant des solutions sur mesure, respectueuses de l'environnement 
           et économiquement viables.
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-10 mt-60">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 mt-10">
         <div className="text-center flex flex-col items-center">
           <Check className="text-black w-6 h-6" />
           <p className="font-semibold mt-2">D’une expertise <br /> technique complète</p>

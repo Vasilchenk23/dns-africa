@@ -1,3 +1,5 @@
+"use client"
+
 export const metadata = {
   title: "About DNS Africa | Leading Solar Energy Solutions",
   description:
@@ -21,8 +23,25 @@ export const metadata = {
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function About() {
+  const router = useRouter();
+  const currentPath = usePathname();
+  const navigateAndScroll = (sectionId) => {
+    if (currentPath === "/") {
+      scrollToSection(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section className="py-16 text-center" id="aboutUs">
       <div className="container text-center px-6 md:px-12 max-w-[1200px] mx-auto">
@@ -49,12 +68,12 @@ export default function About() {
           </div>
         </div>
         <div className="flex items-center justify-center mt-16">
-          <Link 
-            href="/contact" 
+          <a 
             className="bg-[#00509E] text-white px-6 py-3 rounded-full w-[181px] h-[52px] flex items-center justify-center"
+            onClick={() => navigateAndScroll("contact")}
           >
             CONTACT US
-          </Link>
+          </a>
         </div>
       </div>
     </section>

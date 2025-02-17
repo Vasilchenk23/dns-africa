@@ -105,7 +105,7 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-      <div id="google_translate_element" style={{ display: "none" }}></div>
+      <div id="google_translate_element" style={{ display: "none", border: '1px solid red' }}></div>
     </header>
   );
 }

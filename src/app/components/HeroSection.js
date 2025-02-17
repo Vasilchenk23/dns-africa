@@ -1,7 +1,24 @@
+"use client"
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Hero() {
+  const router = useRouter();
+  const currentPath = usePathname();
+  const navigateAndScroll = (sectionId) => {
+    if (currentPath === "/") {
+      scrollToSection(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section className="relative w-[100vw] h-[696px] flex items-center justify-left text-white">
       <Image 
@@ -20,12 +37,12 @@ export default function Hero() {
           Lighting the Future
         </h2>
         <div className="flex items-center justify-center mt-[100px]">
-          <Link 
-            href="/contact" 
-            className="bg-[#00509E] text-white px-4 py-2 rounded-[50px] w-[181px] h-[52px] flex items-center justify-center text-center"
+          <a
+            onClick={() => navigateAndScroll("contact")} 
+            className="bg-[#00509E] text-white px-4 py-2 rounded-[50px] w-[181px] h-[52px] cursor-pointer flex items-center justify-center text-center"
           >
             CONTACT US
-          </Link>
+          </a>
         </div>
       </div>
     </section>
