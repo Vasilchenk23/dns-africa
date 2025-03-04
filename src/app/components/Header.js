@@ -2,42 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import styles from "../Header.module.css";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("EN");
   const router = useRouter();
   const currentPath = usePathname();
-  
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    script.async = true;
-    document.body.appendChild(script);
-
-    window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        { pageLanguage: "auto", includedLanguages: "en,fr,ru,uk" },
-        "google_translate_element"
-      );
-
-      const translateElement = document.querySelector(".goog-te-banner-frame");
-      if (translateElement) {
-        translateElement.style.display = "none"; 
-      }
-    };
-  }, []);
 
   const toggleLanguage = () => {
-    const googleTranslate = document.querySelector(".goog-te-combo");
-    if (googleTranslate) {
-      googleTranslate.value = language === "EN" ? "en" : "fr";
-      googleTranslate.dispatchEvent(new Event("change"));
-      setLanguage(language === "EN" ? "FR" : "EN");
-    }
+    const currentLang = document.documentElement.lang;
+    const newLang = currentLang === "en" ? "fr" : "en"; 
+    document.documentElement.lang = newLang;
+    localStorage.setItem("preferredLanguage", newLang); 
+    location.reload(); 
   };
 
   const navigateAndScroll = (sectionId) => {
@@ -73,7 +52,7 @@ export default function Header() {
             News
           </a>
           <button className={styles.langButton} onClick={toggleLanguage}>
-            {language}
+            Translate
           </button>
         </nav>
         <Link href="/contact" className={styles.contactBtn}>
@@ -98,14 +77,13 @@ export default function Header() {
           <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
           <Link href="/news" onClick={() => setMenuOpen(false)}>News</Link>
           <button className={styles.langButton} onClick={toggleLanguage}>
-            {language}
+            Translate
           </button>
           <Link href="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
             CONTACT US
           </Link>
         </nav>
       </div>
-      <div id="google_translate_element" style={{ display: "none", border: '1px solid red' }}></div>
     </header>
   );
 }
