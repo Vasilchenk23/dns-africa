@@ -9,7 +9,7 @@ export async function POST(req) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host: 'smtp.hostinger.com',
       port: 587,
       secure: false,
       auth: {
@@ -24,7 +24,7 @@ export async function POST(req) {
       subject: `🛒 New message from ${fullName}`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #333;">
-          <h2 style="color: #007BFF;">🛍️ New Inquiry from Customer</h2>
+          <h2 style="color: #007BFF;"> ❗️New Inquiry from Customer❗️</h2>
           <p><strong>Full Name:</strong> ${fullName} 👤</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Question:</strong> ${question}</p>
