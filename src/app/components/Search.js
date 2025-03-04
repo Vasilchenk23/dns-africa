@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function SearchBar() {
+  
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchChange = (e) => {
