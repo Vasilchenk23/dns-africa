@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
-import Head from "next/head";
+import { LanguageProvider } from "../context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,10 +81,12 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <LanguageProvider>
         <Header />
         {children}
         <ContactUs />
         <Footer />
+      </LanguageProvider>
       </body>
     </html>
   );

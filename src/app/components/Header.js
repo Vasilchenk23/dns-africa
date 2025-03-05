@@ -2,43 +2,34 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useLanguage } from "../../context/LanguageContext";
 import styles from "../Header.module.css";
 
+const translations = {
+  EN: {
+    aboutUs: "About Us",
+    services: "Our Services",
+    projects: "Projects",
+    blog: "Blog",
+    news: "News",
+    contact: "CONTACT US",
+  },
+  FR: {
+    aboutUs: "À propos",
+    services: "Nos services",
+    projects: "Projets",
+    blog: "Blog",
+    news: "Actualités",
+    contact: "CONTACTEZ-NOUS",
+  },
+};
+
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("EN");
+  const { language, toggleLanguage } = useLanguage(); 
+  
   const router = useRouter();
   const currentPath = usePathname();
-  
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    script.async = true;
-    document.body.appendChild(script);
-
-    window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        { pageLanguage: "auto", includedLanguages: "en,fr,ru,uk" },
-        "google_translate_element"
-      );
-
-      const translateElement = document.querySelector(".goog-te-banner-frame");
-      if (translateElement) {
-        translateElement.style.display = "none"; 
-      }
-    };
-  }, []);
-
-  const toggleLanguage = () => {
-    const googleTranslate = document.querySelector(".goog-te-combo");
-    if (googleTranslate) {
-      googleTranslate.value = language === "EN" ? "en" : "fr";
-      googleTranslate.dispatchEvent(new Event("change"));
-      setLanguage(language === "EN" ? "FR" : "EN");
-    }
-  };
 
   const navigateAndScroll = (sectionId) => {
     if (currentPath === "/") {
@@ -63,49 +54,24 @@ export default function Header() {
         </Link>
 
         <nav className={styles.nav}>
-          <a className="cursor-pointer" onClick={() => navigateAndScroll("aboutUs")}>
-            About Us
-          </a>
-          <Link href="/services">Our Services</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/blog">Blog</Link>
-          <a className="cursor-pointer" onClick={() => navigateAndScroll("news")}>
-            News
-          </a>
+          <a onClick={() => navigateAndScroll("aboutUs")}>{translations[language].aboutUs}</a>
+          <Link href="/services">{translations[language].services}</Link>
+          <Link href="/projects">{translations[language].projects}</Link>
+          <Link href="/blog">{translations[language].blog}</Link>
+          <a onClick={() => navigateAndScroll("news")}>{translations[language].news}</a>
+
+          {/* Кнопка смены языка */}
           <button className={styles.langButton} onClick={toggleLanguage}>
             {language}
           </button>
         </nav>
-        <Link href="/contact" className={styles.contactBtn}>
-          CONTACT US
-        </Link>
+
+        <Link href="/contact" className={styles.contactBtn}>{translations[language].contact}</Link>
 
         <button className={styles.burger} onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "☰" : "☰"}
+          ☰
         </button>
       </div>
-
-      <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
-        <nav className={styles.mobileNav}>
-          <button className="absolute right-4 top-4 text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
-            ✖
-          </button>
-          <br />
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
-          <Link href="/services" onClick={() => setMenuOpen(false)}>Our Services</Link>
-          <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
-          <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
-          <Link href="/news" onClick={() => setMenuOpen(false)}>News</Link>
-          <button className={styles.langButton} onClick={toggleLanguage}>
-            {language}
-          </button>
-          <Link href="/contact" className={styles.contactBtn} onClick={() => setMenuOpen(false)}>
-            CONTACT US
-          </Link>
-        </nav>
-      </div>
-      <div id="google_translate_element" style={{ display: "none", border: '1px solid red' }}></div>
     </header>
   );
 }

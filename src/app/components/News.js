@@ -5,40 +5,66 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-
+import { useLanguage } from "../../context/LanguageContext"; 
 const newsData = [
   {
     id: 1,
     image: "/img/news.png",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    title: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+    },
+    description: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    },
   },
   {
     id: 2,
     image: "/img/news.png",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    title: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+    },
+    description: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    },
   },
   {
     id: 3,
     image: "/img/news.png",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    title: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+    },
+    description: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    },
   },
   {
     id: 4,
     image: "/img/news.png",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    title: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+    },
+    description: {
+      EN: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+      FR: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.",
+    },
   },
 ];
 
 export default function News() {
+  const { language } = useLanguage();
+
   return (
     <section className="py-16 bg-white w-full" id="news">
       <div className="container mx-auto px-4 md:px-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
-          NEWS
+          {language === "EN" ? "NEWS" : "ACTUALITÉS"}
         </h2>
 
         <Swiper
@@ -64,8 +90,12 @@ export default function News() {
                   className="rounded-lg"
                 />
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-900">{news.title}</h3>
-                  <p className="text-gray-600 mt-2">{news.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {language === "EN" ? news.title.EN : news.title.FR}
+                  </h3>
+                  <p className="text-gray-600 mt-2">
+                    {language === "EN" ? news.description.EN : news.description.FR}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>
