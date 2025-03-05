@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="text-center lg:text-left space-y-2">
           <p className="text-blue-900 font-medium">Address</p>
           <p className="text-blue-900 font-medium">Phone Number</p>
-          <p className="text-blue-900 font-medium">dnsafrica5@gmail.com</p>
+          <p className="text-blue-900 font-medium">contact@dnsgroup-africa.com</p>
         </div>
 
         <div className="text-center lg:text-left space-y-2">
