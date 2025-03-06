@@ -63,6 +63,7 @@
     background: none;
     cursor: pointer;
     display: none;
+    z-index: 1001;
   }
   
   .mobileMenu {
@@ -96,4 +97,3 @@
       display: block;
     }
   }
- 
